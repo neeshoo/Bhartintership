@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    background-image:url("Downloads\pexels-engin-akyurt-9685858.jpg");
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  #result {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Temperature Converter</h1>
+  <label for="temperature">Temperature:</label>
+  <input type="number" id="temperature" placeholder="Enter temperature">
+  <label for="unit">From:</label>
+  <select id="unit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+  <button onclick="convertTemperature()">Convert</button>
+  <div id="result"></div>
+</div>
+<script>
+  function convertTemperature() {
+    var temperatureInput = document.getElementById("temperature");
+    var unitSelect = document.getElementById("unit");
+    var resultDiv = document.getElementById("result");
+    
+    if (temperatureInput.value === "") {
+      resultDiv.innerHTML = "Please enter a value.";
+    } else {
+      var temperature = parseFloat(temperatureInput.value);
+      var convertedTemperature;
+      
+      if (unitSelect.value === "celsius") {
+        convertedTemperature = (temperature * 9/5) + 32;
+        resultDiv.innerHTML = temperature + "°C is " + convertedTemperature.toFixed(2) + "°F";
+      } else {
+        convertedTemperature = (temperature - 32) * 5/9;
+        resultDiv.innerHTML = temperature + "°F is " + convertedTemperature.toFixed(2) + "°C";
+      }
+    }
+  }
+</script>
+</body>
+</html>
